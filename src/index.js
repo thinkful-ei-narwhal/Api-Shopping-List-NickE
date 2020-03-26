@@ -1,12 +1,17 @@
-import $ from "jquery";
+import $ from 'jquery';
+import './index.css';
 
-import shoppingList from "./shopping-list";
-import store from "./store";
-import item from "./item";
+import api from './api';
+import store from './store';
+import shoppingList from './shopping-list';
 
-import "./index.css";
+const main = function () {
+  api.getItems()
+    .then((items) => {
+      items.forEach((item) => store.addItem(item));
+      shoppingList.render();
+    });
 
-const main = function() {
   shoppingList.bindEventListeners();
   shoppingList.render();
 };
