@@ -54,6 +54,8 @@ const handleNewItemSubmit = function () {
       .then((newItem) => {
         store.addItem(newItem);
         render();
+      }).catch((error) => {
+        alert(error);
       });
   });
 };
@@ -66,8 +68,9 @@ const handleItemCheckClicked = function () {
       .then(() => {
         store.findAndUpdate(id, { checked: !currentItem.checked });
         render();
+      }).catch((error) => {
+        alert(error);
       });
-    render();
   });
 };
 
@@ -86,6 +89,9 @@ const handleDeleteItemClicked = function () {
       .then(() => {
         store.findAndDelete(id);
         render();
+      })
+      .catch((error) => {
+        alert(error);
       });
 
   });
@@ -113,8 +119,10 @@ const handleEditShoppingItemSubmit = function () {
       .then(() => {
         store.findAndUpdate(id, { name: itemName });
         render();
+      })
+      .catch((error) => {
+        alert(error);
       });
-    render();
   });
 };
 
